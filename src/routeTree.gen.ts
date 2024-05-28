@@ -16,9 +16,21 @@ import { Route as rootRoute } from './routes/__root'
 
 // Create Virtual Routes
 
+const SkillsLazyImport = createFileRoute('/skills')()
+const LicenseLazyImport = createFileRoute('/license')()
 const IndexLazyImport = createFileRoute('/')()
 
 // Create/Update Routes
+
+const SkillsLazyRoute = SkillsLazyImport.update({
+  path: '/skills',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() => import('./routes/skills.lazy').then((d) => d.Route))
+
+const LicenseLazyRoute = LicenseLazyImport.update({
+  path: '/license',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() => import('./routes/license.lazy').then((d) => d.Route))
 
 const IndexLazyRoute = IndexLazyImport.update({
   path: '/',
@@ -36,12 +48,30 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexLazyImport
       parentRoute: typeof rootRoute
     }
+    '/license': {
+      id: '/license'
+      path: '/license'
+      fullPath: '/license'
+      preLoaderRoute: typeof LicenseLazyImport
+      parentRoute: typeof rootRoute
+    }
+    '/skills': {
+      id: '/skills'
+      path: '/skills'
+      fullPath: '/skills'
+      preLoaderRoute: typeof SkillsLazyImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
 // Create and export the route tree
 
-export const routeTree = rootRoute.addChildren({ IndexLazyRoute })
+export const routeTree = rootRoute.addChildren({
+  IndexLazyRoute,
+  LicenseLazyRoute,
+  SkillsLazyRoute,
+})
 
 /* prettier-ignore-end */
 
@@ -50,11 +80,19 @@ export const routeTree = rootRoute.addChildren({ IndexLazyRoute })
   "routes": {
     "__root__": {
       "children": [
-        "/"
+        "/",
+        "/license",
+        "/skills"
       ]
     },
     "/": {
       "filePath": "index.lazy.tsx"
+    },
+    "/license": {
+      "filePath": "license.lazy.tsx"
+    },
+    "/skills": {
+      "filePath": "skills.lazy.tsx"
     }
   }
 }

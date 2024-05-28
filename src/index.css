@@ -1,11 +1,22 @@
+@font-face {
+  font-family: PixelMplus12;
+  src: url('/font/PixelMplus12-Regular.ttf') format('truetype');
+}
+
+.basecontainer {
+  margin: 24px;
+  height: 100vh;;
+}
+
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  /* font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif; */
+  font-family: 'PixelMplus12';
   line-height: 1.5;
   font-weight: 400;
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: #303030;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -15,11 +26,11 @@
 
 a {
   font-weight: 500;
-  color: #646cff;
+  color: #7ca0f0;
   text-decoration: inherit;
 }
 a:hover {
-  color: #535bf2;
+  color: #3b72e8;
 }
 
 body {
@@ -30,9 +41,29 @@ body {
   min-height: 100vh;
 }
 
+p, th, td {
+  font-size: 1.2em;
+}
+
 h1 {
+  padding-bottom: 5px;
   font-size: 3.2em;
   line-height: 1.1;
+}
+
+h2 {
+  padding-top: 5px;
+  padding-bottom: 0;
+  margin: 0;
+  margin-top: 32px;
+  font-size: 1.6em;
+  line-height: 1.1;
+}
+
+h1, h2, th, td {
+  text-shadow:
+    4px 4px 0 #000,
+    2px 2px 0 #000;
 }
 
 button {
