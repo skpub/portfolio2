@@ -16,16 +16,34 @@ import { Route as rootRoute } from './routes/__root'
 
 // Create Virtual Routes
 
+const TimelineLazyImport = createFileRoute('/timeline')()
+const Skills2LazyImport = createFileRoute('/skills2')()
 const SkillsLazyImport = createFileRoute('/skills')()
+const PrinciplesLazyImport = createFileRoute('/principles')()
 const LicenseLazyImport = createFileRoute('/license')()
 const IndexLazyImport = createFileRoute('/')()
 
 // Create/Update Routes
 
+const TimelineLazyRoute = TimelineLazyImport.update({
+  path: '/timeline',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() => import('./routes/timeline.lazy').then((d) => d.Route))
+
+const Skills2LazyRoute = Skills2LazyImport.update({
+  path: '/skills2',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() => import('./routes/skills2.lazy').then((d) => d.Route))
+
 const SkillsLazyRoute = SkillsLazyImport.update({
   path: '/skills',
   getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/skills.lazy').then((d) => d.Route))
+
+const PrinciplesLazyRoute = PrinciplesLazyImport.update({
+  path: '/principles',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() => import('./routes/principles.lazy').then((d) => d.Route))
 
 const LicenseLazyRoute = LicenseLazyImport.update({
   path: '/license',
@@ -55,11 +73,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LicenseLazyImport
       parentRoute: typeof rootRoute
     }
+    '/principles': {
+      id: '/principles'
+      path: '/principles'
+      fullPath: '/principles'
+      preLoaderRoute: typeof PrinciplesLazyImport
+      parentRoute: typeof rootRoute
+    }
     '/skills': {
       id: '/skills'
       path: '/skills'
       fullPath: '/skills'
       preLoaderRoute: typeof SkillsLazyImport
+      parentRoute: typeof rootRoute
+    }
+    '/skills2': {
+      id: '/skills2'
+      path: '/skills2'
+      fullPath: '/skills2'
+      preLoaderRoute: typeof Skills2LazyImport
+      parentRoute: typeof rootRoute
+    }
+    '/timeline': {
+      id: '/timeline'
+      path: '/timeline'
+      fullPath: '/timeline'
+      preLoaderRoute: typeof TimelineLazyImport
       parentRoute: typeof rootRoute
     }
   }
@@ -70,7 +109,10 @@ declare module '@tanstack/react-router' {
 export const routeTree = rootRoute.addChildren({
   IndexLazyRoute,
   LicenseLazyRoute,
+  PrinciplesLazyRoute,
   SkillsLazyRoute,
+  Skills2LazyRoute,
+  TimelineLazyRoute,
 })
 
 /* prettier-ignore-end */
@@ -82,7 +124,10 @@ export const routeTree = rootRoute.addChildren({
       "children": [
         "/",
         "/license",
-        "/skills"
+        "/principles",
+        "/skills",
+        "/skills2",
+        "/timeline"
       ]
     },
     "/": {
@@ -91,8 +136,17 @@ export const routeTree = rootRoute.addChildren({
     "/license": {
       "filePath": "license.lazy.tsx"
     },
+    "/principles": {
+      "filePath": "principles.lazy.tsx"
+    },
     "/skills": {
       "filePath": "skills.lazy.tsx"
+    },
+    "/skills2": {
+      "filePath": "skills2.lazy.tsx"
+    },
+    "/timeline": {
+      "filePath": "timeline.lazy.tsx"
     }
   }
 }

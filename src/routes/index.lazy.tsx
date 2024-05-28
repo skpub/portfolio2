@@ -3,32 +3,29 @@ import { createLazyFileRoute } from '@tanstack/react-router'
 import { Header } from '../components/Header'
 import { License } from './license.lazy'
 import { Skills } from './skills.lazy'
+import { Principles } from './principles.lazy'
 import face from '/img/face.jpg'
 import { css } from '@emotion/react'
+import { Skills2 } from './skills2.lazy'
+import { Timeline } from './timeline.lazy'
 
 export const Route = createLazyFileRoute('/')({
   component: Index
 })
 
-const img = css`
-  width: 30vw;
-  height: 30vw;
-  object-fit: cover;
-  box-shadow: 10px 10px 0px rgba(0, 0, 0, 1.0);
-  @media (min-width: 768px) {
-    width: 20vw;
-    height: 20vw;
-  }
-`
-
 const prof_container = css`
   height: 100vh;
   width: 100vw;
+  img {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    box-shadow: 10px 10px 0px rgba(0, 0, 0, 1.0);
+  }
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  margin-top: 100px;
   div {
     margin: 30px;
     h2 {
@@ -41,12 +38,19 @@ const prof_container = css`
       padding-right: 10px;
     }
   }
+  @media (max-width: 768px) {
+    flex-direction: column;
+    img {
+      width: 60vw;
+      height: 60vw;
+    }
+  }
 `
 function Profile() {
   return (
     <div css={prof_container}>
       <div>
-        <img src={face} css={img} alt="" />
+        <img src={face} alt="" />
       </div>
       <div>
         <h2>
@@ -57,6 +61,14 @@ function Profile() {
           <tr>
             <th>所属</th>
             <td>新潟大学大学院自然科学研究科数理物質科学専攻 M1</td>
+          </tr>
+          <tr>
+            <th>略歴</th>
+            <td>一関高専(情報・ソフトウェア系)→新潟大学理学部</td>
+          </tr>
+          <tr>
+            <th>資格</th>
+            <td>応用情報技術者試験(R1年度秋試験)</td>
           </tr>
           <tr>
             <th>性別</th>
@@ -80,12 +92,15 @@ function Profile() {
   )
 }
 
-function Index() {
+export function Index() {
   return (
-    <div className="p-2 flex gap-2">
-      <Header />
+    <div>
+      {/* <Header /> */}
       <Profile />
       <Skills />
+      <Skills2 />
+      <Principles />
+      <Timeline />
       <License />
     </div>
   )
