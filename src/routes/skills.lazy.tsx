@@ -15,6 +15,7 @@ export const skills_table_style = css`
   table-layout: fixed;
   width: 100%;
   th {
+    vertical-align: top;
     word-break: break-all;
     width: 10vw;
   }
@@ -25,14 +26,13 @@ export const skills_table_style = css`
     margin: 10px;
     th {
       width: 15vw;
-
     }
   }
 `
 
-export function Skills() {
+function Skills() {
   return (
-    <div className='basecontainer'>
+    <>
       <Title title='できること1' />
       <h2>使える言語・フレームワーク</h2>
       <table css={skills_table_style}>
@@ -50,7 +50,7 @@ export function Skills() {
         </tr>
         <tr>
           <th>JS/TS</th>
-          <td>React(Vite), これ作るくらいは出来る。</td>
+          <td>React(Vite, Tanstack Router), これ作るくらいは出来る。</td>
         </tr>
         <tr>
           <th>SQL</th>
@@ -90,6 +90,6 @@ export function Skills() {
         </tr>
 
       </table>
-    </div>
+    </>
   )
 }

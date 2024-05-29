@@ -21,9 +21,9 @@ const top_margin_0 = css`
 `
 
 
-export function Timeline() {
+function Timeline() {
   return (
-    <div className='basecontainer'>
+    <>
       <Title title='詳細な経歴' />
       <h2>2017年4月 一関工業高等専門学校(一関高専) 未来創造工学科 入学 (改組後 一期生)</h2>
       <div css={gakunen_container}>
@@ -78,7 +78,7 @@ export function Timeline() {
             音声処理関連で興味があったため、ゼミでフーリエ解析の本を読み始める。また、唐突にプログラムを書きたくなりはじめ、
             ポートフォリオを準備したり(これの以前に作った第一世代のもの)、マイクラの全自動バックアッププラグインを開発し始める。
             マイクラの自動バックアップに必要な小さなライブラリとして 
-            CalenderTaskScheduler(crontabのようなもの)、DIrBackup(ファイル削除を考慮する差分・増分バックアップライブラリ)を作り上げる。
+            CronParser(crontabのようなもの)、DIrBackup(ファイル削除を考慮する差分・増分バックアップライブラリ)を作り上げる。
           `}
           </p>
         </div>
@@ -92,6 +92,6 @@ export function Timeline() {
           <p>今に至る</p>
         </div>
       </div>
-    </div>
+    </>
   )
 }

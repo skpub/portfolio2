@@ -7,9 +7,9 @@ export const Route = createLazyFileRoute('/skills2')({
   component: Skills2
 })
 
-export function Skills2() {
+function Skills2() {
   return (
-    <div className='basecontainer'>
+    <>
       <Title title='できること2' />
       <h2>使っている開発支援ツール・開発環境</h2>
       <table css={skills_table_style}>
@@ -59,6 +59,6 @@ export function Skills2() {
           <td>遠隔で自宅サーバにログインするのはもちろん、SSHポートフォワーディングによって外部からルータ管理画面への疎通を確立するなどの基本的な使い方が出来る。</td>
         </tr>
       </table>
-    </div>
+    </>
   )
 }

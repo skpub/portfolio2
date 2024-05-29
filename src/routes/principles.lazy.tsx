@@ -7,9 +7,9 @@ export const Route = createLazyFileRoute('/principles')({
   component: Principles
 })
 
-export function Principles() {
+function Principles() {
   return (
-    <div className='basecontainer'>
+    <>
       <Title title='チーム開発で大事にしていること'/>
       <h2>メンバ全員が意見を明確に示し、最終的にチームとしての意見を出して共有すること。</h2>
       <p> {`
@@ -29,6 +29,6 @@ export function Principles() {
         私の意見として、チーム開発においては筆談なりチャットなり時間を取るなり、とにかく合理的な範囲で様々な手段を講じてでも
         意見を言いやすい雰囲気を作り、チームとしての合意形成を図るべきだと考えている。そのコストを掛ける合理性・根拠は先に述べた通りである。
       `}</p>
-    </div>
+    </>
   )
 }

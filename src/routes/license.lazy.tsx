@@ -7,12 +7,12 @@ export const Route = createLazyFileRoute('/license')({
   component: License
 })
 
-export function License() {
+function License() {
   return (
-    <div className='basecontainer'>
+    <>
       <Title title='License' />
       <Item title='PixelMplus' content='https://github.com/itouhiro/PixelMplus/'></Item>
-    </div>
+    </>
   )
 }
 

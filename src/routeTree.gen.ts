@@ -16,14 +16,21 @@ import { Route as rootRoute } from './routes/__root'
 
 // Create Virtual Routes
 
+const WorksLazyImport = createFileRoute('/works')()
 const TimelineLazyImport = createFileRoute('/timeline')()
 const Skills2LazyImport = createFileRoute('/skills2')()
 const SkillsLazyImport = createFileRoute('/skills')()
+const ServerLazyImport = createFileRoute('/server')()
 const PrinciplesLazyImport = createFileRoute('/principles')()
 const LicenseLazyImport = createFileRoute('/license')()
 const IndexLazyImport = createFileRoute('/')()
 
 // Create/Update Routes
+
+const WorksLazyRoute = WorksLazyImport.update({
+  path: '/works',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() => import('./routes/works.lazy').then((d) => d.Route))
 
 const TimelineLazyRoute = TimelineLazyImport.update({
   path: '/timeline',
@@ -39,6 +46,11 @@ const SkillsLazyRoute = SkillsLazyImport.update({
   path: '/skills',
   getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/skills.lazy').then((d) => d.Route))
+
+const ServerLazyRoute = ServerLazyImport.update({
+  path: '/server',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() => import('./routes/server.lazy').then((d) => d.Route))
 
 const PrinciplesLazyRoute = PrinciplesLazyImport.update({
   path: '/principles',
@@ -80,6 +92,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PrinciplesLazyImport
       parentRoute: typeof rootRoute
     }
+    '/server': {
+      id: '/server'
+      path: '/server'
+      fullPath: '/server'
+      preLoaderRoute: typeof ServerLazyImport
+      parentRoute: typeof rootRoute
+    }
     '/skills': {
       id: '/skills'
       path: '/skills'
@@ -101,6 +120,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TimelineLazyImport
       parentRoute: typeof rootRoute
     }
+    '/works': {
+      id: '/works'
+      path: '/works'
+      fullPath: '/works'
+      preLoaderRoute: typeof WorksLazyImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
@@ -110,9 +136,11 @@ export const routeTree = rootRoute.addChildren({
   IndexLazyRoute,
   LicenseLazyRoute,
   PrinciplesLazyRoute,
+  ServerLazyRoute,
   SkillsLazyRoute,
   Skills2LazyRoute,
   TimelineLazyRoute,
+  WorksLazyRoute,
 })
 
 /* prettier-ignore-end */
@@ -125,9 +153,11 @@ export const routeTree = rootRoute.addChildren({
         "/",
         "/license",
         "/principles",
+        "/server",
         "/skills",
         "/skills2",
-        "/timeline"
+        "/timeline",
+        "/works"
       ]
     },
     "/": {
@@ -139,6 +169,9 @@ export const routeTree = rootRoute.addChildren({
     "/principles": {
       "filePath": "principles.lazy.tsx"
     },
+    "/server": {
+      "filePath": "server.lazy.tsx"
+    },
     "/skills": {
       "filePath": "skills.lazy.tsx"
     },
@@ -147,6 +180,9 @@ export const routeTree = rootRoute.addChildren({
     },
     "/timeline": {
       "filePath": "timeline.lazy.tsx"
+    },
+    "/works": {
+      "filePath": "works.lazy.tsx"
     }
   }
 }

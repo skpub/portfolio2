@@ -1,6 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react'
 import kusa from '/img/kusa.png'
+import kusa_under from '/img/kusa_under.png'
 
 const background = css`
   position: absolute;
@@ -14,9 +15,23 @@ const background = css`
   background-repeat: repeat;
 `
 
+const background_under = css`
+  position: absolute;
+  top: 100px;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  background-image: url(${kusa_under});
+  background-size:50px;
+  image-rendering: pixelated;
+  background-repeat: repeat;
+`
+
 export function Header() {
   return (
-    <div css={background}>
+    <div>
+      <div css={background}></div>
+      <div css={background_under}></div>
     </div>
   )
 }
