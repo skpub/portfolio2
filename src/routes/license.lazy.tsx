@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import { componentTypes, createLazyFileRoute } from '@tanstack/react-router'
+import { createLazyFileRoute } from '@tanstack/react-router'
 import { css } from '@emotion/react'
 import { Title } from '../components/Title'
 
