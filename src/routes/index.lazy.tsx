@@ -25,7 +25,7 @@ function Index() {
 }
 
 const prof_container = css`
-  height: 100vh;
+  height: 100dvh;
   width: 100vw;
   img {
     width: 300px;
@@ -50,10 +50,25 @@ const prof_container = css`
     }
   }
   @media (max-width: 768px) {
+    div {
+      padding: 0;
+      padding-left: 15px;
+      padding-right: 15px;
+      margin: 0;
+    }
     flex-direction: column;
     img {
       width: 60vw;
       height: 60vw;
+    }
+  }
+  @media (max-width: 400px) {
+    transform: scale(0.8);
+    div {
+      padding: 0;
+      padding-left: 15px;
+      padding-right: 15px;
+      margin: 0;
     }
   }
 `
@@ -76,6 +91,7 @@ export function Profile() {
     color: var(--fore2);
     position: absolute;
     top: 90vh;
+    top: 90dvh;
     margin: 0 auto;
     left: 50%;
     transform: translateX(-50%);
