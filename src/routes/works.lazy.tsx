@@ -8,6 +8,7 @@ import tongking from '/img/TONGKING2.png'
 import cronparser from '/img/cronparser.png'
 import meigens from '/img/meigens.png'
 import face from '/img/pv1.png'
+import portfolio2 from '/img/pf2.png'
 
 export const Route = createLazyFileRoute('/works')({
   component: works
@@ -22,15 +23,32 @@ type work_content = {
 
 function WorkElem(props: work_content) {
   const work_style = css`
+    @media (min-width: 768px) {
+      width: calc(50% - 20px);
+    }
+    @media (min-width: 900px) {
+      width: calc(100%/3 - 20px);
+    }
+    @media (min-width: 1200px) {
+      width: calc(25% - 20px);
+    }
+    @media (min-width: 1600px) {
+      width: calc(20% - 20px)
+    }
+    @media (min-width: 2000px) {
+      width: 300px;
+    }
     display: flex;
     padding: 10px;
-    flex: 1;
     img {
       width: 90%;
       height: 90%;
+      box-shadow: 4px 4px 0px #099;
     }
     img:hover {
       filter: brightness(0.8);
+      transform: translate(2px, 2px);
+      box-shadow: none;
     }
     p {
       margin-top: 0;
@@ -42,7 +60,7 @@ function WorkElem(props: work_content) {
     @media (max-width: 768px) {
       flex-direction: row;
       img {
-        padding-right: 12px;
+        margin-right: 20px;
         width: 100px;
       }
     }
@@ -50,7 +68,7 @@ function WorkElem(props: work_content) {
   return (
     <div css={work_style}>
       <div>
-        <a href={props.link}>
+        <a href={props.link} target='_blank'>
           <img src={props.path} alt="" />
         </a>
       </div>
@@ -82,6 +100,7 @@ function works() {
         <WorkElem path={tongking} lang='C' link='https://github.com/skpub/gl_kadai' content='gl_kadai: 3DオブジェクトファイルをOpenGLで描画するやつ' />
         <WorkElem path={meigens} lang='Go, SQL' link='https://github.com/skpub/meigens-api' content='meigens-api: 名言管理API' />
         <WorkElem path={face} lang='TS(React)' link='https://github.com/skpub/portfolio_sato_kaito' content='portfolio(v1): 先代のポートフォリオです' />
+        <WorkElem path={portfolio2} lang='TS(React)' link='https://github.com/skpub/portfolio2' content='portfolio(v2): このポートフォリオです' />
       </div>
     </>
   )

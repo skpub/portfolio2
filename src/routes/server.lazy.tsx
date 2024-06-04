@@ -6,6 +6,7 @@ import { css } from '@emotion/react'
 import homesrv from '/img/homesrv.svg'
 import srv from '/img/server.jpg'
 import rtr from '/img/router.jpg'
+import homeenv from '/img/homesrv.svg'
 
 export const Route = createLazyFileRoute('/server')({
   component: Server
@@ -50,7 +51,7 @@ function Server() {
           LANやProxmox VEの管理画面に侵入されることはないようにしている)
           なお、近いうちに名言APIと短歌共有サービスも生やす予定である。`}
         </p>
-        <a href="/img/homesrv.svg"><p>もちろんSVG版もあるよ</p></a>
+        <a href={homeenv}><p>もちろんSVG版もあるよ</p></a>
         <img src={homesrv} alt="" />
         <h2>ぎゃらり</h2>
         <div className='imgs'>

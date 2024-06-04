@@ -25,7 +25,7 @@ function Index() {
 }
 
 const prof_container = css`
-  height: 100dvh;
+  min-height: 100dvh;
   width: 100vw;
   img {
     width: 300px;
@@ -49,7 +49,7 @@ const prof_container = css`
       padding-right: 10px;
     }
   }
-  @media (max-width: 768px) {
+  @media (max-width: 667px and min-height: 500px) {
     div {
       padding: 0;
       padding-left: 15px;
@@ -64,10 +64,30 @@ const prof_container = css`
   }
   @media (max-width: 400px) {
     transform: scale(0.8);
-    div {
+    .prof_container_img {
+      padding-right: 15px;
+    }
+    .prof_container_text {
       padding: 0;
       padding-left: 15px;
+      margin: 0;
+    }
+  }
+  @media (max-height: 500px) {
+    transform: scale(0.8);
+    img {
+      width: 40vw;
+      height: 40vw;
+    }
+    .prof_container_img {
       padding-right: 15px;
+    }
+    .prof_container_text {
+      h2 {
+        font-size: 1.5rem;
+      }
+      padding: 0;
+      padding-left: 15px;
       margin: 0;
     }
   }
@@ -101,10 +121,10 @@ export function Profile() {
   return (
     <div>
       <div css={prof_container}>
-        <div>
+        <div className="prof_container_img">
           <img src={face} alt="" />
         </div>
-        <div>
+        <div className="prof_container_text">
           <h2>
             佐藤 海音 (Sato Kaito)
           </h2>
