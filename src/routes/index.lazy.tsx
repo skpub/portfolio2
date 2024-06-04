@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { createLazyFileRoute } from '@tanstack/react-router'
-import face from '/img/face.jpg'
+import face from '/img/face.webp'
 import { css } from '@emotion/react'
 import { useEffect, useState } from 'react'
 

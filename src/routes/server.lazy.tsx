@@ -4,8 +4,8 @@ import { Title } from '../components/Title'
 import { css } from '@emotion/react'
 
 import homesrv from '/img/homesrv.svg'
-import srv from '/img/server.jpg'
-import rtr from '/img/router.jpg'
+import srv from '/img/server.webp'
+import rtr from '/img/router.webp'
 import homeenv from '/img/homesrv.svg'
 
 export const Route = createLazyFileRoute('/server')({

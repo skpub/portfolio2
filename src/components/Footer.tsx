@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react'
-import kusa from '/img/kusa.png'
-import kusa_upper from '/img/kusa_upper.png'
+import kusa from '/img/kusa.webp'
+import kusa_upper from '/img/kusa_upper.webp'
 
 const container = css`
   filter: saturate(0.5);

@@ -3,12 +3,12 @@ import { css } from '@emotion/react'
 import { createLazyFileRoute } from '@tanstack/react-router'
 import { Title } from '../components/Title'
 
-import dirbackup from '/img/dirbackup.png'
-import tongking from '/img/TONGKING2.png'
-import cronparser from '/img/cronparser.png'
-import meigens from '/img/meigens.png'
-import face from '/img/pv1.png'
-import portfolio2 from '/img/pf2.png'
+import dirbackup from '/img/dirbackup.webp'
+import tongking from '/img/TONGKING2.webp'
+import cronparser from '/img/cronparser.webp'
+import meigens from '/img/meigens.webp'
+import face from '/img/pv1.webp'
+import portfolio2 from '/img/pf2.webp'
 
 export const Route = createLazyFileRoute('/works')({
   component: works
