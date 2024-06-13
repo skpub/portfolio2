@@ -3,10 +3,9 @@ import { createLazyFileRoute } from '@tanstack/react-router'
 import { Title } from '../components/Title'
 import { css } from '@emotion/react'
 
-import homesrv from '/img/homesrv.svg'
+import homesrv from '/img/homeNW.svg'
 import srv from '/img/server.webp'
 import rtr from '/img/router.webp'
-import homeenv from '/img/homesrv.svg'
 
 export const Route = createLazyFileRoute('/server')({
   component: Server
@@ -51,7 +50,7 @@ function Server() {
           LANやProxmox VEの管理画面に侵入されることはないようにしている)
           なお、近いうちに名言APIと短歌共有サービスも生やす予定である。`}
         </p>
-        <a href={homeenv}><p>もちろんSVG版もあるよ</p></a>
+        <a href={homesrv}><p>もちろんSVG版もあるよ</p></a>
         <img src={homesrv} alt="" />
         <h2>ぎゃらり</h2>
         <div className='imgs'>
