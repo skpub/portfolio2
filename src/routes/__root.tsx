@@ -4,19 +4,32 @@ import { createRootRoute, Link, Outlet } from '@tanstack/react-router'
 import { Profile } from './index.lazy'
 import { Title } from '../components/Title'
 import { Footer } from '../components/Footer'
+import { useState } from 'react'
+import { FontContext } from '../states/font'
+
 
 export const Route = createRootRoute({
-  component: () => (
-    <>
-      <Profile />
+  component: RootRoute
+})
+
+function RootRoute() {
+  const [font, setfont] = useState(false)
+  const root = css({
+    fontFamily: font ? 'PixelMplus12' : 'BIZ UDPGothic',
+  })
+  return (
+    <div css={root}>
+      <FontContext.Provider value={{font, setfont}}>
+        <Profile />
+      </FontContext.Provider>
       <Links />
       <div className='basecontainer'>
         <Outlet />
       </div>
       <Footer />
-    </>
+    </div>
   )
-})
+}
 
 // 以下はルーティングのテンプレート部分
 // どこのページに遷移しようと共通のテンプレとして以下のコンポーネントは描画されたままで、

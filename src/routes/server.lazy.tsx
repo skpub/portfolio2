@@ -18,6 +18,7 @@ const style = css`
     display: block
   }
   .imgs {
+    margin-top: 24px;
     display: flex;
     div {
       flex: 1;
@@ -43,14 +44,14 @@ function Server() {
           {`自宅サーバの構成は以下の通りである。
           この自宅サーバにホストされているサービスはこのポートフォリオとマイクラサーバ。
           基本的な構成として、Yamaha RTX1210がよしなにやってくれている感じであり、
-          RTX1210にWAN(LAN2), LAN(LAN1-vlan1), DMZ(LAN1-vlan2) Storage NW(LAN3)
+          RTX1210にWAN(lan2), LAN(vlan1.1), DMZ(vlan1.2) 開発環境(lan3)
           のセグメントを作らせてルーティングしている。
           また、外からDMZにだけアクセス出来るようにNATを設定している。
           (仮にDMZに侵入されたとして、SSHポートフォワーディング等によって
           LANやProxmox VEの管理画面に侵入されることはないようにしている)
           なお、近いうちに名言APIと短歌共有サービスも生やす予定である。`}
         </p>
-        <a href={homesrv}><p>もちろんSVG版もあるよ</p></a>
+        <a href={homesrv}><p>NW構成図SVGファイルのリンク</p></a>
         <img src={homesrv} alt="" />
         <h2>ぎゃらり</h2>
         <div className='imgs'>

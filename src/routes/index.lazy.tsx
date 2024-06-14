@@ -2,7 +2,8 @@
 import { createLazyFileRoute } from '@tanstack/react-router'
 import face from '/img/face.webp'
 import { css } from '@emotion/react'
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
+import { FontContext } from '../states/font'
 
 export const Route = createLazyFileRoute('/')({
   component: Index
@@ -107,6 +108,12 @@ export function Profile() {
     }
   }, [])
 
+  const {font, setfont} = useContext(FontContext)
+
+  function fontflip() {
+    font ? setfont(false) : setfont(true)
+  }
+
   const mokujidayo = css`
     color: var(--fore2);
     position: absolute;
@@ -118,8 +125,18 @@ export function Profile() {
     opacity: ${visible ? 1 : 0};
     transition: opacity 0.5s;
   `
+
+  const button = css`
+    position: absolute;
+    right: 0;
+    margin: 30px;
+    background-color: var(--fore2);
+    border-radius: 30px;
+  `
+
   return (
     <div>
+      <button css={button} onClick={fontflip}>フォントを{font ? 'UD': 'ギザギザ'}にする</button>
       <div css={prof_container}>
         <div className="prof_container_img">
           <img src={face} alt="" />
